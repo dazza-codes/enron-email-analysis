@@ -3,7 +3,6 @@
 # Resources
 
 
-- https://hortonworks.com/blog/the-data-lifecycle-part-one-avroizing-the-enron-emails/
 - https://github.com/medale/spark-mail
 
 ### Akka
@@ -17,3 +16,6 @@
 ### Avro
 
 - https://dzone.com/articles/kafka-avro-scala-example
+- https://hortonworks.com/blog/the-data-lifecycle-part-one-avroizing-the-enron-emails/
+  - https://s3.amazonaws.com/rjurney.public/enron.avro
+- https://github.com/rjurney/Agile_Data_Code/blob/master/ch03/gmail/email.avro.schema
