@@ -4,3 +4,5 @@
 *.log
 target/
 
+mail_records.avro
+
