@@ -13,13 +13,7 @@ import akka.util.ByteString
 import scala.concurrent._
 import scala.concurrent.duration._
 
-object TextFileStream extends App {
-
-  if (args.length == 0) {
-    throw new IllegalArgumentException("Input directory is required")
-  }
-  val root: Path = Paths.get(args(0))
-  directoryWalker(root)
+object TextFileStream {
 
   def directoryWalker(root: Path): Unit = {
     implicit val system: ActorSystem = ActorSystem("TextFileStream")
