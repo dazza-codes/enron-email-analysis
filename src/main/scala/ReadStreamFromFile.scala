@@ -1,22 +1,29 @@
-package com.packt.akka
+import java.nio.file.Paths
 
-import java.io.File
-
-import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
-import akka.stream.io.Framing
+import akka.stream._
 import akka.stream.scaladsl._
-import akka.stream.stage.{ Context, StatefulStage, SyncDirective }
+
+import akka.{ NotUsed, Done }
+import akka.actor.ActorSystem
 import akka.util.ByteString
 
-import scala.annotation.tailrec
-
-import akka.stream.io.Implicits._
+import scala.concurrent._
+import scala.concurrent.duration._
 
 object ReadStream extends App {
-  implicit val actorSystem = ActorSystem()
+
+  implicit val system: ActorSystem = ActorSystem("ReadStream")
+  implicit val ec: ExecutionContextExecutor = system.dispatcher
+  implicit val materializer: ActorMaterializer = ActorMaterializer()
+
+  val source: Source[Int, NotUsed] = Source(1 to 100)
+
+  val done: Future[Done] = source.runForeach(i => println(i))(materializer)
+
+  done.onComplete(_ => system.terminate())
+
+  /*
   import actorSystem.dispatcher
-  implicit val flowMaterializer = ActorMaterializer()
 
   // read lines from a log file
   val logFile = new File("src/main/resources/log.txt")
@@ -35,4 +42,6 @@ object ReadStream extends App {
       actorSystem.shutdown()
       actorSystem.awaitTermination()
   }
+  */
 }
+
