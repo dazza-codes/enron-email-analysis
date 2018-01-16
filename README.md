@@ -44,6 +44,8 @@ runMain MailRecordsAvroScript "/data/src/enron_emails/enron_with_categories"
 
 ### Avro
 
+- https://github.com/sksamuel/avro4s
+- https://github.com/hopped/akka-avro-serializer/
 - https://dzone.com/articles/kafka-avro-scala-example
 - https://hortonworks.com/blog/the-data-lifecycle-part-one-avroizing-the-enron-emails/
   - https://s3.amazonaws.com/rjurney.public/enron.avro
