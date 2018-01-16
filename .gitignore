@@ -6,3 +6,4 @@ target/
 
 mail_records.avro
 
+enron_email_records.avro
