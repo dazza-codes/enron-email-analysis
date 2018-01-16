@@ -9,7 +9,7 @@ case class MailRecord(uuid: String,
                       subject: String,
                       body: String,
                       attachments: List[MailAttachment],
-                      dateUtcEpoch: Long,
+                      dateEpochUTC: Long,
                       mailFields: Map[String,String]
                       ) {
 
