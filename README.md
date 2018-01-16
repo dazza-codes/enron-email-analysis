@@ -1,16 +1,21 @@
 
 # Usage
 
-This project was built with scala 2.12 using the Scala Build Tool (sbt).  To run examples, install and run `sbt`, then:
+This project uses the Scala Build Tool (sbt).  To run examples, install and run `sbt`, then:
 
 ```scala
+// In the sbt REPL
+
 // Parse and print a single email file
 runMain MailParserScript "/data/enron_with_categories/1/70706.txt"
 // Parse and print all the email files (*.txt) from a directory
 runMain MailParserScript "/data/enron_with_categories/1/"
 runMain MailParserScript "/data/enron_with_categories/"
+
 // Save all the parsed email records to an AVRO file
 runMain MailRecordsAvroScript "/data/src/enron_emails/enron_with_categories"
+// Convert AVRO to Parquet
+runMain AvroToParquetScript "enron_email_records.avro" "enron_email_records.parquet"
 ```
 
 
@@ -41,7 +46,7 @@ runMain MailRecordsAvroScript "/data/src/enron_emails/enron_with_categories"
 - connectors
   - https://developer.lightbend.com/docs/alpakka/current/index.html
   - https://doc.akka.io/docs/akka-stream-kafka/current/home.html
-
+  
 ### Avro
 
 - https://github.com/sksamuel/avro4s
@@ -50,3 +55,13 @@ runMain MailRecordsAvroScript "/data/src/enron_emails/enron_with_categories"
 - https://hortonworks.com/blog/the-data-lifecycle-part-one-avroizing-the-enron-emails/
   - https://s3.amazonaws.com/rjurney.public/enron.avro
 - https://github.com/rjurney/Agile_Data_Code/blob/master/ch03/gmail/email.avro.schema
+
+### Eel
+
+- https://github.com/51zero/eel-sdk
+
+"Eel is a toolkit for manipulating data in the hadoop ecosystem. By hadoop ecosystem we mean
+file formats common to the big-data world, such as parquet, orc, csv in locations such as HDFS
+or Hive tables. In contrast to distributed batch or streaming engines such as Spark or Flink,
+Eel is an SDK intended to be used directly in process."
+
