@@ -2,7 +2,8 @@ name := "Enron Emails"
 
 version := "1.0"
 
-scalaVersion := "2.12.4"
+// spark 2.2.1 requires scala 2.11.8
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   "com.lightbend.akka" %% "akka-stream-alpakka-file" % "0.16",
@@ -12,5 +13,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-testkit" % "2.5.9" % Test,
   "com.typesafe.akka" %% "akka-stream-testkit" % "2.5.9" % Test,
   "com.sksamuel.avro4s" %% "avro4s-core" % "1.8.0",
-  "io.eels" %% "eel-core" % "1.2.4"
+  "io.eels" %% "eel-core" % "1.2.4",
+  "org.apache.spark" %% "spark-sql" % "2.2.1"
 )
