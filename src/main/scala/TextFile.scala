@@ -13,7 +13,7 @@ object TextFile {
 
   def read(filename: String): Option[List[String]] = {
     try {
-      val lines = using(io.Source.fromFile(filename)) { source =>
+      val lines = using(scala.io.Source.fromFile(filename)) { source =>
         (for (line <- source.getLines) yield line).toList
       }
       Some(lines)
