@@ -16,23 +16,24 @@ This project uses the Scala Build Tool (sbt).  To run examples, install and run 
 directory (where the `build.sbt` file is located).  The `sbt` should download all the project dependencies (any
 warnings about dependency conflicts can be ignored, they arise from 3rd-party dependency resolution).
 
-### Email ETL
+### Email Parsing, Cleanup, & ETL
 
-Parsing emails and converting the data into AVRO and Parquet.  These ETL use Akka Streams for reliable, scalable ETL.
+Parsing emails and ETL into AVRO and Parquet.  These ETL use Akka Streams for reliable, scalable, parallel processing.
 - https://doc.akka.io/docs/akka/current/stream/index.html
 
 ```scala
 // In the sbt REPL
 
 // Parse and print a single email file
-runMain MailParserScript "/data/enron_with_categories/1/70706.txt"
+runMain MailParserScript "/data/src/enron_emails/enron_with_categories/1/70706.txt"
 // Parse and print all the email files (*.txt) from a directory
-runMain MailParserScript "/data/enron_with_categories/1/"
-runMain MailParserScript "/data/enron_with_categories/"
+runMain MailParserScript "/data/src/enron_emails/enron_with_categories/1/"
+runMain MailParserScript "/data/src/enron_emails/enron_with_categories/"
 
 // Save all the parsed email records to an AVRO file
 runMain MailRecordsAvroScript "/data/src/enron_emails/enron_with_categories"
 // Convert AVRO to Parquet
+// rm enron_email_records.parquet # if it exists
 runMain AvroToParquetScript "enron_email_records.avro" "enron_email_records.parquet"
 ```
 
