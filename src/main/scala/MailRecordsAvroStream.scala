@@ -6,13 +6,16 @@ import akka.stream._
 import akka.stream.alpakka.file.scaladsl.Directory
 import akka.stream.scaladsl._
 import akka.{Done, NotUsed}
-import com.sksamuel.avro4s.{AvroDataOutputStream, AvroOutputStream}
+import com.sksamuel.avro4s.{AvroDataOutputStream, AvroOutputStream, SchemaFor}
 
 import scala.concurrent._
 
 case class MailRecordsAvroStream(path: Path) {
 
   val avroOutputFile = new File("enron_email_records.avro")
+
+  implicit val schemaForMailRecord: SchemaFor[MailRecord] = SchemaFor[MailRecord]
+
   val avroOutputStream: AvroDataOutputStream[MailRecord] = AvroOutputStream.data[MailRecord](avroOutputFile)
 
   def directoryWalker(): Unit = {

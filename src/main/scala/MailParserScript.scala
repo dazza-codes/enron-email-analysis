@@ -15,10 +15,14 @@ object MailParserScript extends App {
   val inPath: Path = Paths.get(args(0))
 
   if (inPath.toFile.isFile) {
+    println(s"Processing file: $inPath")
     val rec: MailRecord = MailParser.recordFromFile(inPath.toString)
     println(rec.toString)
   } else if (inPath.toFile.isDirectory) {
+    println(s"Processing directory: $inPath")
     MailParserStream.directoryWalker(inPath)
+  } else {
+    println(s"Unknown input: $inPath")
   }
 
 }

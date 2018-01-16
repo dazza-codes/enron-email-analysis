@@ -4,6 +4,7 @@ import com.sksamuel.avro4s.{AvroInputStream, AvroOutputStream}
 
 object MailRecordAvroTestScript extends App {
 
+  val source = "FileName"
   val uuid = "UUID"
   val from = "fromUser"
   val to = List("toUserA", "toUserB")
@@ -17,7 +18,7 @@ object MailRecordAvroTestScript extends App {
   val attachment = MailAttachment("fileName", 0, "mimeType", Array(0))
   val attachments = List(attachment)
 
-  val rec = MailRecord(uuid, from, to, cc, bcc, subject, body, attachments, dateUtcEpoch, mailFields)
+  val rec = MailRecord(source, uuid, from, to, cc, bcc, subject, body, attachments, dateUtcEpoch, mailFields)
 
   /**
     * https://github.com/sksamuel/avro4s#serializing

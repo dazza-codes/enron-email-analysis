@@ -1,7 +1,8 @@
 import com.sksamuel.avro4s.AvroSchema
 import org.apache.avro.Schema
 
-case class MailRecord(uuid: String,
+case class MailRecord(source: String,
+                      uuid: String,
                       from: String,
                       to: List[String],
                       cc: List[String],

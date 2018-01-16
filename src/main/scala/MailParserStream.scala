@@ -25,6 +25,10 @@ object MailParserStream {
           .runForeach(fileName => {
             val mailRecord = MailParser.recordFromFile(fileName)
             println(mailRecord.toString)
+//            if(mailRecord.uuid == "Message-ID:") {
+//              println(fileName)
+//              println(mailRecord.uuid)
+//            }
           })
       result.onComplete(_ => system.terminate())
     } catch {

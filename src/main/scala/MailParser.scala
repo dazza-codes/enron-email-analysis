@@ -90,7 +90,10 @@ object MailParser {
 
       }
     }
-    MailRecord(uuid, from, to.toList, cc.toList, bcc.toList, subject, body.mkString("\n"), attachments, dateEpochUTC, mailFields)
+    MailRecord(fileName, uuid,
+      from, to.toList, cc.toList, bcc.toList,
+      subject, body.mkString("\n"),
+      attachments, dateEpochUTC, mailFields)
   }
 
 }
