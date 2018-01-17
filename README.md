@@ -16,27 +16,6 @@ This project uses the Scala Build Tool (sbt).  To run examples, install and run 
 directory (where the `build.sbt` file is located).  The `sbt` should download all the project dependencies (any
 warnings about dependency conflicts can be ignored, they arise from 3rd-party dependency resolution).
 
-### Email Parsing, Cleanup, & ETL
-
-Parsing emails and ETL into AVRO and Parquet.  These ETL use Akka Streams for reliable, scalable, parallel processing.
-- https://doc.akka.io/docs/akka/current/stream/index.html
-
-```scala
-// In the sbt REPL
-
-// Parse and print a single email file
-runMain MailParserScript "/data/src/enron_emails/enron_with_categories/1/70706.txt"
-// Parse and print all the email files (*.txt) from a directory
-runMain MailParserScript "/data/src/enron_emails/enron_with_categories/1/"
-runMain MailParserScript "/data/src/enron_emails/enron_with_categories/"
-
-// Save all the parsed email records to an AVRO file
-runMain MailRecordsAvroScript "/data/src/enron_emails/enron_with_categories"
-// Convert AVRO to Parquet
-// rm enron_email_records.parquet # if it exists
-runMain AvroToParquetScript "enron_email_records.avro" "enron_email_records.parquet"
-```
-
 ### Email Spark Analysis
 
 Package a jar containing the application
@@ -111,7 +90,16 @@ file formats common to the big-data world, such as parquet, orc, csv in location
 or Hive tables. In contrast to distributed batch or streaming engines such as Spark or Flink,
 Eel is an SDK intended to be used directly in process."
 
+### ElasticSearch
+
+- https://github.com/sksamuel/elastic4s
+
 ### Gmail analysis
 
 - https://github.com/rjurney/Agile_Data_Code/tree/master/ch03
   - Pig, MongoDB, ElasticSearch
+
+### Scala SQL
+
+- https://github.com/aselab/scala-activerecord
+- https://github.com/aselab/scala-activerecord-sample/tree/master/sample/src/main/scala
