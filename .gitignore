@@ -9,3 +9,4 @@ mail_records.avro
 enron_email_records.avro
 enron_email_records.parquet
 metastore_db/
+enron-users.parquet/

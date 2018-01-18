@@ -26,7 +26,7 @@ sbt package
 [info] Packaging {..}/{..}/target/scala-2.11/enron-emails_2.11-1.0.jar
 ```
 
-Use spark-submit to run analysis
+Use spark-submit to run analysis (see `bin/spark_analysis.sh` for updated code)
 ```bash
 PACKAGE_JAR="target/scala-2.11/enron-emails_2.11-1.0.jar"
 SPARK_HOME=/opt/spark-2.2.1-bin-hadoop2.7
