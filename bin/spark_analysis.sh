@@ -13,9 +13,9 @@ SPARK_HOME=/opt/spark-2.2.1-bin-hadoop2.7
 ${SPARK_HOME}/bin/spark-submit \
   --class "SparkAnalysisApp" \
   --master local[2] \
-  --jars ./lib/mysql-connector-java-5.1.45.jar \
   ${PACKAGE_JAR} \
   $parquetFile  2> logs/spark_analysis.log
 
+  #--jars ./lib/mysql-connector-java-5.1.45.jar \
 echo "Check logs in logs/spark_analysis.log"
 
